@@ -1,0 +1,72 @@
+<div class="login" ng-cloak>
+    <h1 class="elektora display-4">UniCore</h1>
+    <h1 class="elektora display-4">JumpPack</h1>
+    <div class="material-switch pull-right">
+        <span class="elektora" ng-class="!regToggle ? 'glow' : ''">Login <</span>
+        <input id="someSwitchOptionDefault" name="someSwitchOption001" type="checkbox" ng-model="regToggle" />
+        <label for="someSwitchOptionDefault" class="tag-primary"></label>
+        <span class="elektora" ng-class="regToggle ? 'glow' : ''">> Register</span>
+    </div>
+    <br>
+    <!--<div class="material-switch pull-right">-->
+        <!--Login-->
+        <!--<input id="someSwitchOptionDefault" name="someSwitchOption001" type="checkbox"/>-->
+        <!--<label for="someSwitchOptionDefault" class="label-default"></label>-->
+         <!--Register-->
+    <!--</div>-->
+    <form method="post">
+        <div ng-hide="regToggle">
+            <input type="text" name="u" placeholder="Username" required="required" ng-model="login.username" />
+            <input type="password" name="p" placeholder="Password" required="required" ng-model="login.rawPass"/>
+            <button type="button" class="btn btn-primary btn-block btn-large elektora" ng-click="db('login')">Enter</button>
+        </div>
+        <div ng-hide="!regToggle">
+            <!--<div class="input-group">-->
+                <!--<input ng-focus="fEmail = true" ng-blur="fEmail = false"-->
+                       <!--data-toggle="tooltip" data-placement="right" title="Email"-->
+                       <!--type="text" name="e" placeholder="Email" required="required" ng-model="register.email" />-->
+                <!--<span class="tag tag-primary">Primary</span>-->
+                <!--<span class="input-group-btn" ng-if="fEmail">-->
+                    <!--Email-->
+                    <!--&lt;!&ndash;<button ng-if="fEmail" class="btn btn-primary btn-block btn-large elektora" type="button">Email</button>&ndash;&gt;-->
+                <!--</span>-->
+            <!--</div>-->
+            <span ng-if="fEmail" class="tag tag-primary">Email</span>
+            <input ng-focus="fEmail = true" ng-blur="fEmail = false"
+                   type="text" name="e" placeholder="Email" required="required" ng-model="register.email" />
+            <!--<span ng-if="fUsername" class="tag tag-primary">Username</span>-->
+            <!--<input ng-focus="fUsername = true" ng-blur="fUsername = false"-->
+                   <!--type="text" name="u" placeholder="Username" required="required" ng-model="register.username" />-->
+            <!--<span ng-if="fID" class="tag tag-primary">ID</span>-->
+            <!--<input ng-focus="fID = true" ng-blur="fID = false"-->
+                   <!--type="text" name="i" placeholder="ID#" required="required" ng-model="register.id" />-->
+            <span ng-if="fPassword" class="tag tag-primary">Password</span>
+            <input ng-focus="fPassword = true" ng-blur="fPassword = false"
+                   type="password" name="p" placeholder="Password" required="required" ng-model="register.password"/>
+            <!--<span ng-if="fConfirmPassword" class="tag tag-primary">ConfirmPassword</span>-->
+            <!--<input ng-focus="fConfirmPassword = true" ng-blur="fConfirmPassword = false"-->
+                   <!--type="password" name="pc" placeholder="Confirm Password" required="required" ng-model="register.passwordConfirm"/>-->
+            <button type="button" class="btn btn-primary btn-block btn-large elektora" ng-click="db('register')">Register</button>
+
+        </div>
+        <div class="alert alert-warning alert-dismissible fade in"
+             ng-show="err"
+             role="alert">
+            <strong>{{err.code}}</strong> {{err.err}}
+        </div>
+
+
+        <div>
+            <!--{{regToggle}}-->
+        </div>
+    </form>
+    <!--<div class="">-->
+
+        <!--<li class="list-group-item">-->
+            <!--Login | Register-->
+
+        <!--</li>-->
+    <!--</div>-->
+
+</div>
+

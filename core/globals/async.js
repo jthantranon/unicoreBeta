@@ -1,0 +1,1 @@
+global.async = require('async');

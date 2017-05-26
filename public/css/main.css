@@ -1,0 +1,93 @@
+.h11 { color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.3); letter-spacing:1px; text-align:center; }
+
+.elektora {
+  font-family: Elektora, Arial;
+}
+
+.xmap {
+  margin-bottom: -66px; }
+
+.white {
+  color: snow; }
+
+.yellow {
+  color: yellow; }
+
+.blue {
+  color: slateblue; }
+
+.red {
+  color: red; }
+
+.lime {
+  color: lime; }
+
+.slateblue {
+  color: slateblue; }
+
+.center {
+    text-align: center;
+}
+
+.xcell {
+  margin-right: -5px;
+  vertical-align: text-bottom;
+  /*font-size: 4vw;*/
+  font-size: 3em;
+  cursor: pointer; }
+
+.xcell:hover {
+  background-color: white;
+  color: black; }
+
+.dash .main-card {
+  background-color: rgba(255, 255, 255, 0.69);
+  top: 100px;
+  /*width: 800px;*/ }
+
+.botton-right {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+.show-bg {
+  background-color: white;
+  /*background-image: url("../img/uniLogo.png");*/
+  /*background-image: url("../img/ppbg.png");*/
+  /*background-size: cover;*/
+  background: url("../img/ppbg.png") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  /*background-repeat: no-repeat;*/
+  /*background-attachment: fixed;*/
+  /*background-position: center;*/
+  /*background-size: 100%;*/
+}
+
+.card-glass {
+  background-color: rgba(71, 73, 74, 0.87) !important; }
+
+.glow {
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    /*padding: 10px;*/
+    border: none;
+    /*font: normal 48px/normal "Warnes", Helvetica, sans-serif;*/
+    color: rgba(255,255,255,1);
+    text-decoration: normal;
+    text-align: center;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    white-space: pre;
+    text-shadow: 0 0 10px rgba(255,255,255,1) , 0 0 20px rgba(255,255,255,1) , 0 0 30px rgba(255,255,255,1) , 0 0 40px #ddff3e, 0 0 70px #ff00de , 0 0 80px #ff00de , 0 0 100px #ff00de ;
+    -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+    -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+    -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+    transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+    text-shadow: 0 0 10px rgb(0, 0, 0), 0 0 20px rgb(0, 0, 0), 0 0 30px rgb(0, 0, 0), 0 0 40px #000000, 0 0 70px #00ffff , 0 0 80px #00ffff , 0 0 100px #00ffff ;
+}

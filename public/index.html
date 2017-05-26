@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+    <title>UniCore JP Server Terminal</title>
+
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="node_modules/tether/dist/css/tether.min.css">
+    <link rel="stylesheet" type="text/css" href="css/fonts.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+
+    <script src="../node_modules/chart.js/Chart.js"></script>
+    <script src="../node_modules/chart.js-scatter/Chart.Scatter.js"></script>
+
+    <!--<link rel="stylesheet" type="text/css" href="node_modules/font-awesome/css/font-awesome.min.css">-->
+</head>
+<body ng-app="theApp" ng-controller="theController" class="container-fluid show-bg">
+{{ACTIONS}}
+    <div class="" ng-include="'../views/navi.html'" ng-show="request.token"></div>
+    <link rel="stylesheet" type="text/css" href="css/auth.css">
+    <div class="auth" ng-include="'../views/auth.html'" ng-hide="request.token"></div>
+    <div class="dash" ng-include="'../views/core.html'" ng-show="request.token && !ui.showDebug"></div>
+    <div class="botton-right"><h1 class="elektora display-4 h11">UniConStudios</h1></div>
+
+
+    <!--JS LOADS-->
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../node_modules/tether/dist/js/tether.min.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../node_modules/angular/angular.min.js"></script>
+    <script src="../node_modules/js-base64/base64.min.js"></script>
+
+    <!--<script src="../node_modules/socket.io-client/socket.io.js"></script>-->
+    <script src="node_modules/socket.io-client/dist/socket.io.js"></script>
+    <!--<script src="../node_modules/socket.io/node_modules/socket.io-client/socket.io.js"></script>-->
+
+    <!--<script src="../node_modules/moment/min/moment.min.js"></script>-->
+    <!--<script src="js/common.js"></script>-->
+    <script src="main.js"></script>
+
+</body>
+</html>

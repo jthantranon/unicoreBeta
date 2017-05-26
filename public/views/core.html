@@ -1,0 +1,174 @@
+<div class="card-group" ng-include="'../views/customCard.html'"></div>
+<div class="card-group" ng-include="'../views/actions.html'"></div>
+<button type="button"
+        ng-repeat="(k,v) in displays"
+        ng-click="log(v)"
+        title="{{v | json}}"
+        class="btn btn-secondary">
+    {{k}}
+</button>
+<div class="card-group">
+    <div class="card card-inverse card-glass" style="background-color: #333; border-color: #333;">
+        <div class="card-block">
+            <h3 class="card-title">Registration</h3>
+            <div class="form-group row">
+                <label for="smFormGroupInput" class="col-sm-{{labelColWidth}} col-form-label col-form-label-sm card-text">Username</label>
+                <div class="col-sm-{{colWidth}}">
+                    <input type="text" class="form-control form-control-sm" placeholder="Username" ng-model="register.username">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="smFormGroupInput" class="col-sm-{{labelColWidth}} col-form-label col-form-label-sm card-text">Email</label>
+                <div class="col-sm-{{colWidth}}">
+                    <input type="email" class="form-control form-control-sm" placeholder="Email" ng-model="register.email">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="smFormGroupInput" class="col-sm-{{labelColWidth}} col-form-label col-form-label-sm card-text">ID</label>
+                <div class="col-sm-{{colWidth}}">
+                    <input type="text" class="form-control form-control-sm" id="smFormGroupInput" placeholder="ID" ng-model="register.id">
+                </div>
+            </div>
+            <a href="#"
+               ng-click="db('register')"
+               class="btn btn-primary">Register!</a>
+        </div>
+    </div>
+    <div class="card card-inverse card-glass" style="background-color: #333; border-color: #333;">
+        <div class="card-block">
+            <h3 class="card-title">Login</h3>
+            <div class="form-group row">
+                <label for="smFormGroupInput" class="col-sm-{{labelColWidth}} col-form-label col-form-label-sm card-text">Username</label>
+                <div class="col-sm-{{colWidth}}">
+                    <input type="text" class="form-control form-control-sm" placeholder="Username" ng-model="login.username">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="smFormGroupInput" class="col-sm-{{labelColWidth}} col-form-label col-form-label-sm card-text">Password</label>
+                <div class="col-sm-{{colWidth}}">
+                    <input type="password" class="form-control form-control-sm" placeholder="Password" ng-model="login.rawPass">
+                </div>
+            </div>
+            <a href="#"
+               ng-click="db('login')"
+               class="btn btn-primary">Login!</a>
+            <div class="card-text">{{token}}</div>
+        </div>
+
+    </div>
+    <div class="card card-inverse card-glass" style="background-color: #333; border-color: #333;">
+        <div class="card-block">
+            <h3 class="card-title">Account Requests</h3>
+            <div class="form-group row">
+                <label for="smFormGroupInput" class="col-sm-{{labelColWidth}} col-form-label col-form-label-sm card-text">Token</label>
+                <div class="col-sm-{{colWidth}}">
+                    <input type="text" class="form-control form-control-sm" placeholder="Token..." ng-model="request.token">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="smFormGroupInput" class="col-sm-{{labelColWidth}} col-form-label col-form-label-sm card-text">Action</label>
+                <div class="col-sm-{{colWidth}}">
+                    <input type="text" class="form-control form-control-sm" placeholder="Action..." ng-model="request.action">
+                </div>
+            </div>
+            <div class="form-group row" ng-repeat="(k,v) in Actions[request.action]">
+                <label for="smFormGroupInput" class="col-sm-{{labelColWidth}} col-form-label col-form-label-sm card-text">{{k}}</label>
+                <div class="col-sm-{{colWidth}}">
+                    <input type="text" class="form-control form-control-sm" placeholder="{{k}}" ng-model="request.params[k]">
+                </div>
+            </div>
+            <a href="#"
+               ng-click="db('request')"
+               class="btn btn-primary">Submit Request!</a>
+            <a href="#"
+               ng-repeat="(action,params) in Actions"
+               ng-click="db('request',action)"
+               class="btn btn-primary">{{action}}</a>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="card-group">
+    <div class="card card-inverse card-glass" style="background-color: #333; border-color: #333;">
+        <div class="card-block">
+            <h3 class="card-title">Select Sprite</h3>
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button"
+                        ng-repeat="sprite in sprites"
+                        ng-click="selectSprite(sprite._id)"
+                        ng-class="selectedSprite === sprite._id ? 'btn-primary' : 'btn-secondary'"
+                        class="btn">
+                    {{sprite.handle}}
+                </button>
+            </div>
+
+            <div class="card-text">
+                <!--{{selectedSprite | json}}-->
+                <div>
+                    <!--{{displays.sprite.rInventory}}-->
+                    <h4 title="{{displays.sprite | json}}" ng-show="displays.sprite.handle">{{displays.sprite.handle}}'s Inventory</h4>
+                    <div ng-repeat="(r,row) in displays.sprite.rInventory">
+                        <div class="xsquare" ng-repeat="(c,col) in row"
+                             ng-style="xsquareStyle(displays.sprite.inventory.size)"
+                             ng-class="letterColors(col)">
+                            <div class="xcontent"
+                                 ng-click="gridClick(r,c,'inv')">
+                                {{col}}
+                                <!--{{displays.grid.stencil[r][c] || 'x'}}-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-block">
+            <h3 class="card-title">Sprite Requests</h3>
+            <div class="form-group row">
+                <label for="smFormGroupInput" class="col-sm-{{labelColWidth}} col-form-label col-form-label-sm card-text">Token</label>
+                <div class="col-sm-{{colWidth}}">
+                    <input type="text" class="form-control form-control-sm" placeholder="Token..." ng-model="request.token">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="smFormGroupInput" class="col-sm-{{labelColWidth}} col-form-label col-form-label-sm card-text">Action</label>
+                <div class="col-sm-{{colWidth}}">
+                    <input type="text" class="form-control form-control-sm" placeholder="Action..." ng-model="request.action">
+                </div>
+            </div>
+            <div class="form-group row" ng-repeat="(k,v) in SpriteActions[request.action]">
+                <label for="smFormGroupInput" class="col-sm-{{labelColWidth}} col-form-label col-form-label-sm card-text">{{k}}</label>
+                <div class="col-sm-{{colWidth}}">
+                    <input type="text" class="form-control form-control-sm" placeholder="{{k}}" ng-model="request.params[k]">
+                </div>
+            </div>
+            <a href="#"
+               ng-click="db('request')"
+               class="btn btn-primary">Submit Request!</a>
+            <a href="#"
+               ng-repeat="(action,params) in SpriteActions"
+               ng-click="db('request',action)"
+               class="btn btn-primary">{{action}}</a>
+
+        </div>
+    </div>
+
+    <div class="card card-inverse card-glass" style="background-color: #333; border-color: #333;">
+        <div class="card-block card-text">
+            <h3 class="card-title">Readout</h3>
+
+        </div>
+    </div>
+
+
+
+</div>
+
+<canvas id="myChart" width="400" height="400"></canvas>
+<a href="#"
+   ng-repeat="(range,array) in allDat"
+   ng-click="changeAllDat(range)"
+   class="btn btn-primary">{{range}}</a>
+
+<link rel="stylesheet" type="text/css" href="/css/main.css">
